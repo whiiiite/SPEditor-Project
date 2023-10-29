@@ -1,0 +1,18 @@
+﻿body {
+
+}
+
+.common-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-form-field {
+    margin-bottom: 10px;
+}
+
+.junk {
+    height: 900px;
+}

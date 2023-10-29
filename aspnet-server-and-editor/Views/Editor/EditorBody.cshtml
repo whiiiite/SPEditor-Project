@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/editorStyles/index.css" asp-append-version="true" />
+    <link rel="icon" href="~/editor-logo.png" />
+</head>
+
+<div id="editor-container" class="input-area">
+    <div id="lines-numbers-container" class="no-select"></div>
+
+    <div id="caret" class="caret"></div>
+
+    <div class="line"><span class="green section" tabindex="-1">-- snippet sql 2025</span></div>
+    <div class="line"><span class="blue section" tabindex="-1">INSERT </span><span class="blue section" tabindex="-1">INTO </span><span class="blue section" tabindex="-1">TABLE </span></div>
+    <div class="line"><span class="blue section" tabindex="-1">select </span><span tabindex="-1" class="pure section">* </span><span class="blue section" tabindex="-1">from</span></div>
+</div>
+
+<script type="module" src="~/js/editorCode/index.js" asp-append-version="true"></script>

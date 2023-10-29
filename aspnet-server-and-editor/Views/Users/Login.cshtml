@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Login";
+}
+@section AddToHead {
+    <link href="@Url.Content("~/css/pages-styles/common.css")" rel="stylesheet" type="text/css"/>
+}
+
+<form class="common-form" asp-controller="Users" asp-action="Login"
+      method="post">
+    <label>Email</label>
+    <input class="text-form-field" name="Email" type="email" />
+    <label>Your Password</label>
+    <input class="text-form-field" name="Password" type="password" />
+    <button type="submit">Login</button>
+</form>
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="junk"></div>
