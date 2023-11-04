@@ -1,5 +1,5 @@
 ﻿export { analizeAndApplySyntax }
-import { applySyntaxSql } from './syntax/sql_sa'
+import { applySyntaxSql } from './syntax/sql_sa.js'
 
 const sqlLang = 'sql';
 const cLang = 'c';

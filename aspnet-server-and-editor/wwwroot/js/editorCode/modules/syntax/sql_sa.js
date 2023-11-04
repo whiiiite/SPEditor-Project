@@ -1,6 +1,6 @@
 export { applySyntaxSql };
-import { stringIsNullOrWhiteSpace } from '../text';
-import { addSection } from '../ui';
+import { stringIsNullOrWhiteSpace } from '../text.js';
+import { addSection } from '../ui.js';
 const classKey = 'class';
 const plainText = 'plain';
 const func = 'func';
@@ -124,6 +124,18 @@ function getSqlSyntaxSettings() {
             },
             delete: {
                 [classKey]: 'blue'
+            },
+            constraint: {
+                [classKey]: 'blue'
+            },
+            add: {
+                [classKey]: 'blue'
+            },
+            if: {
+                [classKey]: 'oper'
+            },
+            else: {
+                [classKey]: 'oper'
             },
             max: {
                 [classKey]: 'oper'

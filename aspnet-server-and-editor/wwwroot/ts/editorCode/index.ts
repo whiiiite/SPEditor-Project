@@ -2,7 +2,7 @@
     fourSpaces, insertIntoString,
     deleteCharAt,
     stringIsNullOrWhiteSpace
-} from './modules/text';
+} from './modules/text.js';
 
 import {
     getCaretPosInCharsLocal,
@@ -18,9 +18,9 @@ import {
     highlightLineNumber,
     removeElement,
     addJunkSection
-} from './modules/ui';
+} from './modules/ui.js';
 
-import { analizeAndApplySyntax } from './modules/syntaxAnalizer'
+import { analizeAndApplySyntax } from './modules/syntaxAnalizer.js'
 
 let currIndex: number = 0;
 let currLine: HTMLDivElement;
@@ -57,10 +57,21 @@ function setKeyboardEvents(): void {
             if (!currLine) return;
 
             event.preventDefault();
-            currentPos = getCaretPosInCharsLocal();
             currSection.textContent = insertIntoString(currSection.textContent, fourSpaces(), currentPos);
             setCursorTo(currSection, currentPos + 4);
             currentPos++;
+        }
+        else if (event.keyCode === 222) {
+            event.preventDefault();
+            if (event.shiftKey) {
+                currSection.textContent = insertIntoString(currSection.textContent, '"', currentPos);
+            }
+            else {
+                currSection.textContent = insertIntoString(currSection.textContent, "'", currentPos);
+            }
+            setCursorTo(currSection, currentPos + 1);
+            currentPos++;
+            return;
         }
         else if (event.keyCode === 8) {
             event.preventDefault();
@@ -86,6 +97,7 @@ function setKeyboardEvents(): void {
         setCursorTo(currSection, currentPos + 1);
         const globalPos = getCaretPosInCharsGlobal(currLine, currSection);
 
+        // todo: do something with this junk code
         applySyntaxLine(currLine);
         currSection = findCurrentSection(globalPos);
         currSection.focus();
@@ -255,6 +267,10 @@ function recountLines(): void {
     highlightLineNumber(currIndex, currIndex);
 }
 
+function tab() {
+
+}
+
 function enter(currentLine: HTMLDivElement, currentSection: HTMLSpanElement, currPos: number): void {
     // from ts
     const str = currentLine.textContent;
@@ -342,7 +358,7 @@ function arrowLeft(): void {
 function arrowRight(): void {
     const currentPos = getCaretPosInCharsLocal();
 
-    if (currentPos < currSection.textContent.length - 1) {
+    if (currentPos < currSection.textContent.length) {
         setCursorTo(currSection, currentPos + 1);
     } else {
         if (currSection.nextSibling)

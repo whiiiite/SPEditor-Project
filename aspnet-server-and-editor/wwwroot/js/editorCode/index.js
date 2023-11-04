@@ -1,6 +1,6 @@
-import { fourSpaces, insertIntoString, deleteCharAt, stringIsNullOrWhiteSpace } from './modules/text';
-import { getCaretPosInCharsLocal, setCaretToLine, setCaretToPosition, getCaretElement, getCaretClientPos, getEditorContainer, getLineNumberContainer, getCaretPosInCharsGlobal, showCaret, hideCaret, highlightLineNumber, removeElement, addJunkSection } from './modules/ui';
-import { analizeAndApplySyntax } from './modules/syntaxAnalizer';
+import { fourSpaces, insertIntoString, deleteCharAt, stringIsNullOrWhiteSpace } from './modules/text.js';
+import { getCaretPosInCharsLocal, setCaretToLine, setCaretToPosition, getCaretElement, getCaretClientPos, getEditorContainer, getLineNumberContainer, getCaretPosInCharsGlobal, showCaret, hideCaret, highlightLineNumber, removeElement, addJunkSection } from './modules/ui.js';
+import { analizeAndApplySyntax } from './modules/syntaxAnalizer.js';
 let currIndex = 0;
 let currLine;
 let currSection;
@@ -32,10 +32,21 @@ function setKeyboardEvents() {
             if (!currLine)
                 return;
             event.preventDefault();
-            currentPos = getCaretPosInCharsLocal();
             currSection.textContent = insertIntoString(currSection.textContent, fourSpaces(), currentPos);
             setCursorTo(currSection, currentPos + 4);
             currentPos++;
+        }
+        else if (event.keyCode === 222) {
+            event.preventDefault();
+            if (event.shiftKey) {
+                currSection.textContent = insertIntoString(currSection.textContent, '"', currentPos);
+            }
+            else {
+                currSection.textContent = insertIntoString(currSection.textContent, "'", currentPos);
+            }
+            setCursorTo(currSection, currentPos + 1);
+            currentPos++;
+            return;
         }
         else if (event.keyCode === 8) {
             event.preventDefault();
@@ -58,6 +69,7 @@ function setKeyboardEvents() {
         currSection.textContent = insertIntoString(currSection.textContent, event.key, currentPos);
         setCursorTo(currSection, currentPos + 1);
         const globalPos = getCaretPosInCharsGlobal(currLine, currSection);
+        // todo: do something with this junk code
         applySyntaxLine(currLine);
         currSection = findCurrentSection(globalPos);
         currSection.focus();
@@ -189,6 +201,8 @@ function recountLines() {
     }
     highlightLineNumber(currIndex, currIndex);
 }
+function tab() {
+}
 function enter(currentLine, currentSection, currPos) {
     // from ts
     const str = currentLine.textContent;
@@ -266,7 +280,7 @@ function arrowLeft() {
 // Function for moving the cursor to the right on the same line
 function arrowRight() {
     const currentPos = getCaretPosInCharsLocal();
-    if (currentPos < currSection.textContent.length - 1) {
+    if (currentPos < currSection.textContent.length) {
         setCursorTo(currSection, currentPos + 1);
     }
     else {

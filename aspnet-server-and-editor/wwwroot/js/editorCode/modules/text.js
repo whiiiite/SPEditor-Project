@@ -1,7 +1,6 @@
 export { fourSpaces, insertIntoString, deleteCharAt, stringIsNullOrWhiteSpace, stringIsNullOrEmpty };
 function insertIntoString(originalString, insert, position) {
     if (position < 0 || position > originalString.length) {
-        console.error('Недопустимая позиция');
         return originalString;
     }
     const firstPart = originalString.slice(0, position);

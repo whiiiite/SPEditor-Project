@@ -2,7 +2,6 @@
 
 function insertIntoString(originalString:string, insert:string, position:number): string {
     if (position < 0 || position > originalString.length) {
-        console.error('Недопустимая позиция');
         return originalString;
     }
 

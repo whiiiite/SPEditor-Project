@@ -253,6 +253,35 @@ body.darktheme .pure {
     color: rgb(0, 0, 252);
 }
 
+.loader-fullscreen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    background: black;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div.loader-waiter {
+    width: 60px;
+    height: 60px;
+    background: white;
+    animation: move-around 5s normal linear infinite;
+}
+
+@keyframes move-around {
+    0% {
+        -webkit-transform: rotate3d(0, 0, 1, 0deg);
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+    100% {
+        -webkit-transform: rotate3d(0, 0, 1, 360deg);
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
+
 .test {
     width: 300px;
     height: fit-content;
