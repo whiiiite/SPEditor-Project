@@ -2,33 +2,32 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
-namespace SPEditor.Configurations
+namespace SPEditor.Configurations;
+
+public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
 {
-    public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
+    public void Configure(EntityTypeBuilder<IdentityRole> builder)
     {
-        public void Configure(EntityTypeBuilder<IdentityRole> builder)
+        builder.HasData(
+        new IdentityRole
         {
-            builder.HasData(
-            new IdentityRole
-            {
-                Name = "Simple",
-                NormalizedName = "SIMPLE"
-            },
-            new IdentityRole
-            {
-                Name = "Administrator",
-                NormalizedName = "ADMINISTRATOR"
-            },
-            new IdentityRole
-            {
-                Name = "Owner",
-                NormalizedName = "OWNER"
-            },
-            new IdentityRole
-            {
-                Name = "Donator",
-                NormalizedName = "DONATOR"
-            });
-        }
+            Name = "Simple",
+            NormalizedName = "SIMPLE"
+        },
+        new IdentityRole
+        {
+            Name = "Administrator",
+            NormalizedName = "ADMINISTRATOR"
+        },
+        new IdentityRole
+        {
+            Name = "Owner",
+            NormalizedName = "OWNER"
+        },
+        new IdentityRole
+        {
+            Name = "Donator",
+            NormalizedName = "DONATOR"
+        });
     }
 }

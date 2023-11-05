@@ -10,15 +10,14 @@ using Microsoft.EntityFrameworkCore;
 using SPEditor.Data;
 using SPEditor.Entityes.Models;
 
-namespace SPEditor.Controllers
-{
-    public class UserFilesController : Controller
-    {
-        private readonly SPEditorContext _context;
+namespace SPEditor.Controllers;
 
-        public UserFilesController(SPEditorContext context)
-        {
-            _context = context;
-        }
+public class UserFilesController : Controller
+{
+    private readonly SPEditorContext _context;
+
+    public UserFilesController(SPEditorContext context)
+    {
+        _context = context;
     }
 }

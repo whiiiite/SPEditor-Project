@@ -11,15 +11,18 @@
 
 <form class="common-form" asp-controller="Users" asp-action="Register" method="post">
     <label>Email</label>
-    <input class="text-form-field" asp-for="Email" name="Email" type="email" />
+    <input id="email-field" class="text-form-field" asp-for="Email" name="Email" type="email" />
     <label>Username</label>
-    <input class="text-form-field" asp-for="UserName" name="Username" type="text" />
+    <input id="uname-field" class="text-form-field" asp-for="UserName" name="Username" type="text" />
     <label>Password</label>
-    <input class="text-form-field" asp-for="Password" name="Password" type="password" />
+    <input id="password-field" class="text-form-field" asp-for="Password" name="Password" type="password" />
     <label>Confirm password</label>
-    <input class="text-form-field" asp-for="ConfirmPassword" name="ConfirmPassword" type="password" />
-    <button id="register-button" type="submit">Register</button>
+    <input id="confirm-password-field" class="text-form-field" asp-for="ConfirmPassword" name="ConfirmPassword" type="password" />
+    <input id="register-button" type='submit' value='Register' onclick="return clickSubmit()">
     <div id="error-field" asp-validation-summary="All" class="text-danger"></div>
 </form>
-
+<div id="errordiv" style="color: red; display: flex; justify-content: center;"></div>
 <div class="junk"></div>
+@section Scripts {
+    <script src="~/js/pages-js/Users/Register.js"></script>
+}

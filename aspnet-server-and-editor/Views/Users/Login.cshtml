@@ -11,10 +11,16 @@
 <form class="common-form" asp-controller="Users" asp-action="Login"
       method="post">
     <label>Email</label>
-    <input class="text-form-field" name="Email" type="email" />
+    <input id="email-field" class="text-form-field" name="Email" type="email" />
     <label>Your Password</label>
-    <input class="text-form-field" name="Password" type="password" />
-    <button type="submit">Login</button>
+    <input id="psw-field" class="text-form-field" name="Password" type="password" />
+    <input type='submit' value='Login' onclick="return clickSubmit();">
+    <div asp-validation-summary="All" class="text-danger"></div>
 </form>
-<div asp-validation-summary="All" class="text-danger"></div>
+
+<div id="errordiv" style="color: red; display: flex; justify-content: center;"></div>
 <div class="junk"></div>
+
+@section Scripts {
+    <script src="~/js/pages-js/Users/Login.js"></script>
+}

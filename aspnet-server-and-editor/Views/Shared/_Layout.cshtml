@@ -32,7 +32,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Editor" asp-action="SPEditor">Editor</a>
                         </li>
-                        @if(User?.Identity?.IsAuthenticated == false)
+                        @if (User?.Identity?.IsAuthenticated == false)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login">Login</a>

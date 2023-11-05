@@ -1,8 +1,7 @@
-﻿namespace SPEditor.Entityes.ViewModels
+﻿namespace SPEditor.Entityes.ViewModels;
+
+public class LoginUser
 {
-    public class LoginUser
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
+    public string Email { get; set; }
+    public string Password { get; set; }
 }

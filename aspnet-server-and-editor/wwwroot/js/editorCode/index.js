@@ -45,7 +45,6 @@ function setKeyboardEvents() {
                 currSection.textContent = insertIntoString(currSection.textContent, "'", currentPos);
             }
             setCursorTo(currSection, currentPos + 1);
-            currentPos++;
             return;
         }
         else if (event.keyCode === 8) {
@@ -68,7 +67,7 @@ function setKeyboardEvents() {
             return;
         currSection.textContent = insertIntoString(currSection.textContent, event.key, currentPos);
         setCursorTo(currSection, currentPos + 1);
-        const globalPos = getCaretPosInCharsGlobal(currLine, currSection);
+        let globalPos = getCaretPosInCharsGlobal(currLine, currSection);
         // todo: do something with this junk code
         applySyntaxLine(currLine);
         currSection = findCurrentSection(globalPos);
@@ -90,7 +89,7 @@ function findCurrentSection(globalPos) {
     for (const section of sections) {
         const sectionText = section.textContent;
         const sectionLength = sectionText.length;
-        if (currentPos + sectionLength >= globalPos) {
+        if (currentPos + sectionLength + 1 > globalPos) {
             return section;
         }
         currentPos += sectionLength;
