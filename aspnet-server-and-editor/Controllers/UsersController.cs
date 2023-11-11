@@ -15,7 +15,9 @@ public class UsersController : Controller
     private readonly UserManager<User> userManager;
     private readonly SPEditorContext context;
 
-    public UsersController(ILogger<UsersController> logger, UserManager<User> userManager, SPEditorContext context)
+    public UsersController(ILogger<UsersController> logger, 
+        UserManager<User> userManager, 
+        SPEditorContext context)
     {
         this.logger = logger;
         this.userManager = userManager;
@@ -66,7 +68,7 @@ public class UsersController : Controller
             return View(registerUser);
         }
 
-        logger.LogInformation("{string} Registered at {date}", registerUser.Email, DateTime.Now);
+        logger.LogInformation("{string} registered at {date}", registerUser.Email, DateTime.Now);
         return RedirectToAction("Index", "Home");
     }
 
@@ -86,9 +88,11 @@ public class UsersController : Controller
 
         bool isOk = await LoginUserAsync(loginUser);
         if (!isOk)
+        {
             return View(loginUser);
+        }
 
-        logger.LogInformation("{string} Logon at {date}", loginUser.Email, DateTime.Now);
+        logger.LogInformation("{string} logon at {date}", loginUser.Email, DateTime.Now);
         return RedirectToAction("Index", "Home");
     }
 
